@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 
-class PostResultContract : ActivityResultContract<Unit, String?>() {
+class PostResultContract : ActivityResultContract<String?, String?>() {
 
-    override fun createIntent(context: Context, input: Unit): Intent =
-        Intent(context, PostActivity::class.java)
+    override fun createIntent(context: Context, input: String?): Intent =
+        Intent(context, PostActivity::class.java).putExtra(Intent.EXTRA_TEXT, input)
 
     override fun parseResult(resultCode: Int, intent: Intent?): String? =
         if (resultCode == Activity.RESULT_OK) {
