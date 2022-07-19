@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
+import kotlin.properties.Delegates
 
 class PostRepositoryFileImpl(
     private val context: Context
@@ -27,8 +28,7 @@ class PostRepositoryFileImpl(
             }
         } else sync()
     }
-
-
+    
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun save(post: Post) {
