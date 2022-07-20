@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.activity.PostFragment.Companion.longArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FragmentFeedBinding
@@ -36,6 +37,13 @@ class FeedFragment : Fragment() {
             override fun onVideo(post: Post) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
                 startActivity(intent)
+            }
+
+            override fun onPost(post: Post) {
+                findNavController().navigate(R.id.action_feedFragment_to_postFragment,
+                    Bundle().apply {
+                        longArg = post.id
+                    })
             }
 
             override fun onEdit(post: Post) {
