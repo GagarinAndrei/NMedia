@@ -17,6 +17,7 @@ interface OnInteractionListener {
     fun onRemove(post: Post) {}
     fun onShare(post: Post) {}
     fun onVideo(post: Post) {}
+    fun onPost(post: Post) {}
 }
 
 class PostsAdapter(
@@ -85,8 +86,14 @@ class PostViewHolder(
             share.setOnClickListener {
                 onInteractionListener.onShare(post)
             }
+
+            root.setOnClickListener {
+                onInteractionListener.onPost(post)
+            }
         }
     }
+
+
 }
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
