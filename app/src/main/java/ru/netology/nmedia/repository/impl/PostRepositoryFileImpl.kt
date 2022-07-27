@@ -67,7 +67,7 @@ class PostRepositoryFileImpl(
         data.value = posts
         sync()
     }
-    
+
     private fun sync() {
         context.openFileOutput(filename, Context.MODE_PRIVATE).bufferedWriter().use {
             it.write(gson.toJson(posts))

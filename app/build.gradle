@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.0'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -50,8 +51,10 @@ dependencies {
     def gson_version = "2.9.0"
     def fragment_version = "1.5.0"
     def nav_version = "2.5.0"
+    def room_version = "2.4.2"
 
-
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
